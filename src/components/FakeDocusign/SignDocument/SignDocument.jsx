@@ -44,8 +44,9 @@ const SignDocument = () => {
       viewer.current,
     ).then(async instance => {
       const { docViewer, annotManager, Annotations } = instance;
+      console.log(annotManager);
       setAnnotatManager(annotManager);
-
+      console.log(annotManager);
       // select only the insert group
       instance.setToolbarGroup('toolbarGroup-Insert');
 
