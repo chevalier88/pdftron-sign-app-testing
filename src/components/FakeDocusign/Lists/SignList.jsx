@@ -1,14 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,  useContext } from 'react';
 import { Button, Table, Text, Spinner } from 'gestalt';
 import 'gestalt/dist/gestalt.css';
 import { useDispatch } from 'react-redux';
 import { searchForDocumentToSign } from '../../../firebase/firebase.js';
 import { setDocToSign } from '../SignDocument/SignDocumentSlice.js';
 import { useNavigate } from 'react-router-dom';
-import { user } from '../supportFunctions.js'
+import { UserContext } from '../../UserContext.jsx';
 
 const SignList = () => {
-  const {  email } = user; 
+  const { user } = useContext(UserContext);
+  const { email } = user; 
 
   const [docs, setDocs] = useState([]);
   const [show, setShow] = useState(true);

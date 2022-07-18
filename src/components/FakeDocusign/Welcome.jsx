@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import SignList from './Lists/SignList.jsx';
 import SignedList from './Lists/SignedList.jsx';
-import { resetDocToView } from './ViewDocument/ViewDocumentSlice';
-import { resetDocToSign } from './SignDocument/SignDocumentSlice';
+import { resetDocToView } from './ViewDocument/ViewDocumentSlice.js';
+import { resetDocToSign } from './SignDocument/SignDocumentSlice.js';
 import { Box, Button, Container, Heading } from 'gestalt';
 import 'gestalt/dist/gestalt.css';
 
