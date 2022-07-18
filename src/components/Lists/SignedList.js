@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Table, Text, Spinner } from 'gestalt';
 import 'gestalt/dist/gestalt.css';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { searchForDocumentsSigned } from '../../firebase/firebase';
-import { selectUser } from '../../firebase/firebaseSlice';
 import { setDocToView } from '../ViewDocument/ViewDocumentSlice';
-import { navigate } from '@reach/router';
-import user from '../supportFunctions.js'
+import { useNavigate } from 'react-router-dom';
+import { user } from '../supportFunctions.js'
 
 const SignedList = () => {
-  const { displayName, photoURL, email} = user; 
+  const { email } = user; 
   const [docs, setDocs] = useState([]);
   const [show, setShow] = useState(true);
 
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getDocs() {

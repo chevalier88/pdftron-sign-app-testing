@@ -1,14 +1,13 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { navigate } from '@reach/router';
+import { useNavigate } from 'react-router-dom';
 import { Box, Column, Heading, Row, Stack, Button } from 'gestalt';
 import { selectDocToSign } from './SignDocumentSlice';
 import { storage, updateDocumentToSign } from '../../firebase/firebase';
-import { selectUser } from '../../firebase/firebaseSlice';
 import WebViewer from '@pdftron/webviewer';
 import 'gestalt/dist/gestalt.css';
 import './SignDocument.css';
-import user from '../supportFunctions.js'
+import {user} from '../supportFunctions.js'
 
 
 const SignDocument = () => {
@@ -21,6 +20,7 @@ const SignDocument = () => {
   const { email } = user;
 
   const viewer = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     WebViewer(
@@ -105,7 +105,7 @@ const SignDocument = () => {
   const completeSigning = async () => {
     const xfdf = await annotManager.exportAnnotations({ widgets: false, links: false });
     await updateDocumentToSign(docId, email, xfdf);
-    navigate('/');
+    navigate('/fakeDocusign');
   }
 
   return (

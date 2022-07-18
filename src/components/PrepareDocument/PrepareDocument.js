@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { navigate } from '@reach/router';
+import { useNavigate } from 'react-router-dom';
 import {
   Box,
   Column,
@@ -13,17 +13,17 @@ import {
 } from 'gestalt';
 import { selectAssignees, resetSignee } from '../Assign/AssignSlice';
 import { storage, addDocumentToSign } from '../../firebase/firebase';
-import { selectUser } from '../../firebase/firebaseSlice';
 import WebViewer from '@pdftron/webviewer';
 import 'gestalt/dist/gestalt.css';
 import './PrepareDocument.css';
-import user from '../supportFunctions.js'
+import { user } from '../supportFunctions.js'
 
 const PrepareDocument = () => {
   const [instance, setInstance] = useState(null);
   const [dropPoint, setDropPoint] = useState(null);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const assignees = useSelector(selectAssignees);
   const assigneesValues = assignees.map(user => {
@@ -275,7 +275,7 @@ const PrepareDocument = () => {
     });
     await addDocumentToSign(uid, email, referenceString, emails);
     dispatch(resetSignee());
-    navigate('/');
+    navigate('/fakeDocusign');
   };
 
   const dragOver = e => {
