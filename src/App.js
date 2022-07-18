@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Router } from '@reach/router';
 // import { useSelector, useDispatch } from 'react-redux';
 
@@ -12,7 +12,7 @@ import View from './components/View';
 // import PasswordReset from './components/PasswordReset/PasswordReset';
 import Welcome from './components/Welcome';
 
-import { auth, generateUserDocument } from './firebase/firebase';
+// import { auth, generateUserDocument } from './firebase/firebase';
 
 import './App.css';
 

@@ -1,11 +1,11 @@
 import React from 'react';
-import Profile from './Profile/Profile';
+// import Profile from './Profile/Profile';
 import ViewDocument from './ViewDocument/ViewDocument';
 
 const View = () => {
   return (
     <div>
-      <Profile />
+      {/* <Profile /> */}
       <ViewDocument />
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Profile from './Profile/Profile';
+// import Profile from './Profile/Profile';
 import { navigate } from '@reach/router';
 import { useDispatch } from 'react-redux';
 import SignList from './Lists/SignList';
@@ -20,7 +20,6 @@ const ProfilePage = () => {
 
   return (
     <div>
-      <Profile />
       <Container>
         <Box padding={3}>
           <Heading size="md">{`Sign Documents`}</Heading>

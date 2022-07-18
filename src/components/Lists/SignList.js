@@ -9,7 +9,7 @@ import { navigate } from '@reach/router';
 import user from '../supportFunctions.js'
 
 const SignList = () => {
-  const { displayName, photoURL, email} = user; 
+  const {  email } = user; 
 
   const [docs, setDocs] = useState([]);
   const [show, setShow] = useState(true);
