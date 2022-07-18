@@ -3,7 +3,7 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import 'firebase/storage';
 
-import { mergeAnnotations } from '../components/MergeAnnotations/MergeAnnotations';
+import { mergeAnnotations } from '../components/FakeDocusign/MergeAnnotations/MergeAnnotations';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,

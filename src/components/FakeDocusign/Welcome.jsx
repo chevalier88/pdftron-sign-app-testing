@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
-// import Profile from './Profile/Profile';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import SignList from './Lists/SignList';
-import SignedList from './Lists/SignedList';
+import SignList from './Lists/SignList.jsx';
+import SignedList from './Lists/SignedList.jsx';
 import { resetDocToView } from './ViewDocument/ViewDocumentSlice';
 import { resetDocToSign } from './SignDocument/SignDocumentSlice';
 import { Box, Button, Container, Heading } from 'gestalt';

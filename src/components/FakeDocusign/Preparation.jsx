@@ -1,11 +1,9 @@
 import React from 'react';
-// import Profile from './Profile/Profile';
-import PrepareDocument from './PrepareDocument/PrepareDocument';
+import PrepareDocument from './PrepareDocument/PrepareDocument.jsx';
 
 const Preparation = () => {
   return (
     <div>
-      {/* <Profile /> */}
       <PrepareDocument />
     </div>
   );

@@ -1,4 +1,4 @@
-import { storage } from '../../firebase/firebase';
+import { storage } from '../../../firebase/firebase';
 
 export const mergeAnnotations = async (docRef, xfdf) => {
   const PDFNet = window.PDFNet;

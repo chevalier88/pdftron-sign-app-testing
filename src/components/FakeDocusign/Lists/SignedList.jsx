@@ -2,28 +2,26 @@ import React, { useEffect, useState } from 'react';
 import { Button, Table, Text, Spinner } from 'gestalt';
 import 'gestalt/dist/gestalt.css';
 import { useDispatch } from 'react-redux';
-import { searchForDocumentToSign } from '../../firebase/firebase';
-// import { selectUser } from '../../firebase/firebaseSlice';
-import { setDocToSign } from '../SignDocument/SignDocumentSlice';
+import { searchForDocumentsSigned } from '../../../firebase/firebase.js';
+import { setDocToView } from '../ViewDocument/ViewDocumentSlice.js';
 import { useNavigate } from 'react-router-dom';
 import { user } from '../supportFunctions.js'
 
-const SignList = () => {
-  const {  email } = user; 
-
+const SignedList = () => {
+  const { email } = user; 
   const [docs, setDocs] = useState([]);
   const [show, setShow] = useState(true);
 
   const dispatch = useDispatch();
+
   const navigate = useNavigate();
 
   useEffect(() => {
     async function getDocs() {
-      const docsToSign = await searchForDocumentToSign(email);
-      setDocs(docsToSign);
+      const docsToView = await searchForDocumentsSigned(email);
+      setDocs(docsToView);
       setShow(false);
     }
-
     setTimeout(getDocs, 1000);
   }, [email]);
 
@@ -49,19 +47,21 @@ const SignList = () => {
                 {docs.map(doc => (
                   <Table.Row key={doc.docRef}>
                     <Table.Cell>
-                      <Text>{doc.email}</Text>
+                      {doc.emails.map(email => (
+                        <Text key={email}>{email}</Text>
+                      ))}
                     </Table.Cell>
                     <Table.Cell>
-                      <Text>{doc.requestedTime ? new Date(doc.requestedTime.seconds*1000).toDateString() : ''}</Text>
+                      <Text>{doc.signedTime ? new Date(doc.signedTime.seconds*1000).toDateString() : ''}</Text>
                     </Table.Cell>
                     <Table.Cell>
                       <Button
                         onClick={event => {
                           const { docRef, docId } = doc;
-                          dispatch(setDocToSign({ docRef, docId }));
-                          navigate(`/signDocument`);
+                          dispatch(setDocToView({ docRef, docId }));
+                          navigate(`/viewDocument`);
                         }}
-                        text="Sign"
+                        text="View"
                         color="blue"
                         inline
                       />
@@ -71,7 +71,7 @@ const SignList = () => {
               </Table.Body>
             </Table>
           ) : (
-            'You do not have any documents to sign'
+            'You do not have any documents to review'
           )}
         </div>
       )}
@@ -79,4 +79,4 @@ const SignList = () => {
   );
 };
 
-export default SignList;
+export default SignedList;

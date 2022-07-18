@@ -11,8 +11,8 @@ import {
   Button,
   SelectList,
 } from 'gestalt';
-import { selectAssignees, resetSignee } from '../Assign/AssignSlice';
-import { storage, addDocumentToSign } from '../../firebase/firebase';
+import { selectAssignees, resetSignee } from '../Assign/AssignSlice.js';
+import { storage, addDocumentToSign } from '../../../firebase/firebase';
 import WebViewer from '@pdftron/webviewer';
 import 'gestalt/dist/gestalt.css';
 import './PrepareDocument.css';
