@@ -4,8 +4,8 @@ import 'gestalt/dist/gestalt.css';
 import { useDispatch } from 'react-redux';
 import { searchForDocumentsSigned } from '../../firebase/firebase';
 import { setDocToView } from '../ViewDocument/ViewDocumentSlice';
-import { navigate } from '@reach/router';
-import user from '../supportFunctions.js'
+import { useNavigate } from 'react-router-dom';
+import { user } from '../supportFunctions.js'
 
 const SignedList = () => {
   const { email } = user; 
@@ -13,6 +13,8 @@ const SignedList = () => {
   const [show, setShow] = useState(true);
 
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getDocs() {

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 // import Profile from './Profile/Profile';
-import { navigate } from '@reach/router';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import SignList from './Lists/SignList';
 import SignedList from './Lists/SignedList';
@@ -11,6 +11,9 @@ import 'gestalt/dist/gestalt.css';
 
 
 const ProfilePage = () => {
+  
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { navigate } from '@reach/router';
+import { useNavigate } from 'react-router-dom';
 import {
   Box,
   Button,
@@ -20,6 +20,9 @@ const Assign = () => {
   const [showToast, setShowToast] = useState(false);
   const assignees = useSelector(selectAssignees);
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
 
   const prepare = () => {
     if (assignees.length > 0) {

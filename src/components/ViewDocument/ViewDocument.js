@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { navigate } from '@reach/router';
+import { useNavigate } from 'react-router-dom';
 import { Box, Column, Heading, Row, Stack, Button } from 'gestalt';
 import { selectDocToView } from './ViewDocumentSlice';
 import { storage } from '../../firebase/firebase';
@@ -15,6 +15,7 @@ const ViewDocument = () => {
   const { docRef } = doc;
 
   const viewer = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     WebViewer(
@@ -46,7 +47,7 @@ const ViewDocument = () => {
   };
 
   const doneViewing = async () => {
-    navigate('/');
+    navigate('/fakeDocusign');
   }
 
   return (

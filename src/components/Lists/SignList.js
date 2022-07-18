@@ -5,8 +5,8 @@ import { useDispatch } from 'react-redux';
 import { searchForDocumentToSign } from '../../firebase/firebase';
 // import { selectUser } from '../../firebase/firebaseSlice';
 import { setDocToSign } from '../SignDocument/SignDocumentSlice';
-import { navigate } from '@reach/router';
-import user from '../supportFunctions.js'
+import { useNavigate } from 'react-router-dom';
+import { user } from '../supportFunctions.js'
 
 const SignList = () => {
   const {  email } = user; 
@@ -15,6 +15,7 @@ const SignList = () => {
   const [show, setShow] = useState(true);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function getDocs() {
