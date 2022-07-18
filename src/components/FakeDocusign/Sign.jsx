@@ -1,6 +1,5 @@
 import React from 'react';
-// import Profile from './Profile/Profile';
-import SignDocument from './SignDocument/SignDocument';
+import SignDocument from './SignDocument/SignDocument.jsx';
 
 const Sign = () => {
   return (

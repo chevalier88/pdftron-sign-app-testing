@@ -12,7 +12,7 @@ import {
   Toast,
 } from 'gestalt';
 import 'gestalt/dist/gestalt.css';
-import { addSignee, selectAssignees } from './AssignSlice';
+import { addSignee, selectAssignees } from './AssignSlice.js';
 
 const Assign = () => {
   const [email, setEmail] = useState('');

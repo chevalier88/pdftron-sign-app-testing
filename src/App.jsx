@@ -2,12 +2,12 @@ import React from 'react';
 import store from './app/store';
 import { Provider } from 'react-redux';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import AssignUsers from './components/AssignUsers';
-import Preparation from './components/Preparation';
-import Sign from './components/Sign';
-import View from './components/View';
-import Welcome from './components/Welcome';
-import Home from './components/Home'
+import AssignUsers from './components/FakeDocusign/AssignUsers.jsx';
+import Preparation from './components/FakeDocusign/Preparation.jsx';
+import Sign from './components/FakeDocusign/Sign.jsx';
+import View from './components/FakeDocusign/View.jsx';
+import Welcome from './components/FakeDocusign/Welcome.jsx';
+import Home from './components/FakeDocusign/Home.jsx'
 
 import './App.css';
 
