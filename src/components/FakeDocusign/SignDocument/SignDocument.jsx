@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Box, Column, Heading, Row, Stack, Button } from 'gestalt';
@@ -7,10 +7,11 @@ import { storage, updateDocumentToSign } from '../../../firebase/firebase.js';
 import WebViewer from '@pdftron/webviewer';
 import 'gestalt/dist/gestalt.css';
 import './SignDocument.css';
-import {user} from '../supportFunctions.js'
+import { UserContext } from '../../UserContext.jsx';
 
 
 const SignDocument = () => {
+  const { user } = useContext(UserContext)
   const [annotManager, setAnnotatManager] = useState(null);
   const [annotPosition, setAnnotPosition] = useState(0);
 

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useContext, useRef, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -16,11 +16,12 @@ import { storage, addDocumentToSign } from '../../../firebase/firebase';
 import WebViewer from '@pdftron/webviewer';
 import 'gestalt/dist/gestalt.css';
 import './PrepareDocument.css';
-import { user } from '../supportFunctions.js'
+import { UserContext } from '../../UserContext.jsx';
 
 const PrepareDocument = () => {
   const [instance, setInstance] = useState(null);
   const [dropPoint, setDropPoint] = useState(null);
+  const { user } = useContext(UserContext);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const PrepareDocument = () => {
     assigneesValues.length > 0 ? assigneesValues[0].value : '';
   const [assignee, setAssignee] = useState(initialAssignee);
 
-  const { uid, email } = user;
+  const { id, email } = user;
 
   const viewer = useRef(null);
   const filePicker = useRef(null);
@@ -257,7 +258,7 @@ const PrepareDocument = () => {
   const uploadForSigning = async () => {
     // upload the PDF with fields as AcroForm
     const storageRef = storage.ref();
-    const referenceString = `docToSign/${uid}${Date.now()}.pdf`;
+    const referenceString = `docToSign/${id}${Date.now()}.pdf`;
     const docRef = storageRef.child(referenceString);
     const { docViewer, annotManager } = instance;
     const doc = docViewer.getDocument();
@@ -273,7 +274,7 @@ const PrepareDocument = () => {
     const emails = assignees.map(assignee => {
       return assignee.email;
     });
-    await addDocumentToSign(uid, email, referenceString, emails);
+    await addDocumentToSign(id, email, referenceString, emails);
     dispatch(resetSignee());
     navigate('/fakeDocusign');
   };
